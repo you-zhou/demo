@@ -39,3 +39,11 @@ def user_register(request):
         "form": form,
     }
     return render(request, 'accounts/register.html', context)
+
+
+def user_profile(request):
+    form = RegisterForm(request.POST or None)
+    context = {
+        "form": form,
+    }
+    return render(request, 'accounts/profile.html', context)
