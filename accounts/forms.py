@@ -48,17 +48,17 @@ class RegisterForm(forms.ModelForm):
                    'autofocus': ""}))
     first_name = forms.CharField(
         required = False,
-        label='First Name (Optional)',
+        label='First Name',
         max_length=30,
         widget=forms.TextInput(
-            attrs={'placeholder': 'First Name'})
+            attrs={'placeholder': 'First Name (Optional)'})
     )
     last_name = forms.CharField(
         required = False,
-        label='Last Name (Optional)',
+        label='Last Name',
         max_length=30,
         widget=forms.TextInput(
-            attrs={'placeholder': 'Last Name'})
+            attrs={'placeholder': 'Last Name (Optional)'})
     )
     email = forms.EmailField(
         label='Email',
