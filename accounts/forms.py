@@ -47,13 +47,15 @@ class RegisterForm(forms.ModelForm):
             attrs={'placeholder': "Username",
                    'autofocus': ""}))
     first_name = forms.CharField(
-        label='First Name',
+        required = False,
+        label='First Name (Optional)',
         max_length=30,
         widget=forms.TextInput(
             attrs={'placeholder': 'First Name'})
     )
     last_name = forms.CharField(
-        label='Last Name',
+        required = False,
+        label='Last Name (Optional)',
         max_length=30,
         widget=forms.TextInput(
             attrs={'placeholder': 'Last Name'})
@@ -62,10 +64,6 @@ class RegisterForm(forms.ModelForm):
         label='Email',
         widget=forms.TextInput(
             attrs={'placeholder': "Email"}))
-    email2 = forms.EmailField(
-        label='Confirm Email',
-        widget=forms.TextInput(
-            attrs={'placeholder': "Confirm Email"}))
     password = forms.CharField(
         label='Password',
         max_length=50,
@@ -82,7 +80,6 @@ class RegisterForm(forms.ModelForm):
         fields = [
             'username',
             'email',
-            'email2',
             'password',
             'password2',
         ]
@@ -94,9 +91,6 @@ class RegisterForm(forms.ModelForm):
         As oppose overwriting clean() will only put the error on top.
         """
         email = self.cleaned_data.get('email')
-        email2 = self.cleaned_data.get('email2')
-        if email != email2:
-            raise forms.ValidationError("Email must match")
         email_qs = User.objects.filter(email=email)
         if email_qs.exists():
             raise forms.ValidationError(
