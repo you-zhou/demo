@@ -66,7 +66,7 @@
                     <!-- Check if user is authenticated. -->
                     {% if user.is_authenticated %}
                     <li>
-                        <a class="page-scroll" href="{% url 'accounts:profile' %}">Welcome, {{ user }}</a>
+                        <a class="page-scroll" href="{% url 'accounts:profile' %}">G'day, {{ user }}</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="{% url 'accounts:logout' %}">Logout</a>
